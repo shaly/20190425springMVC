@@ -1,2 +1,2 @@
-com\syf\study\Application.class
 com\syf\study\entity\User.class
+com\syf\study\controller\IndexController.class

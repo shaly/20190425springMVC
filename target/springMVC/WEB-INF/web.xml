@@ -5,20 +5,38 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
   version="3.1">
 
-
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	
+	
+	
 	<!-- 
 		配置springMVC核心配置文件的三种方式
-		1.基于servlet-name的方式进行配置，可以再web-inf/下面去简历一个叫<servlet-name>-servlet.xml文件
-		2.基于namespace的方式，来打破第一种规则，用namespace可以随心所欲叫任何名字。但是必须还是放在web-inf下
-		3.基于configlocation的方式，可以叫任何名字，也可以防止任意classpath目录进行定义。
+		方式1.基于servlet-name的方式进行配置，可以再web-inf/下面去简历一个叫<servlet-name>-servlet.xml文件
+		方式2.基于namespace的方式，来打破第一种规则，用namespace可以随心所欲叫任何名字。但是必须还是放在web-inf下
+		方式3.基于configlocation的方式，可以叫任何名字，也可以防止任意classpath目录进行定义。
 	
 	-->
 	<servlet>
 		<servlet-name>tmall</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 方式1已配置成功,配置方式可以自行选择无需纠结，根据个人喜好 -->
+		<!-- 方式2 -->
+		<!-- <init-param>
+			<param-name>namespace</param-name>
+			<param-value>janespringmvc</param-value>
+		</init-param> -->
+		
+		<!-- 方式3 -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:janespringmvc.xml</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>tmall</servlet-name>
-		<url-pattern></url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 </web-app>
