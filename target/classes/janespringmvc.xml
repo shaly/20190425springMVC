@@ -42,7 +42,7 @@
 
 	<!-- 静态资源的处理 -->
 	<mvc:resources location="/WEB-IN/statics/css" mapping="/css/**"></mvc:resources>
-	<mvc:resources location="/WEB-IN/statics/js" mapping="//**"></mvc:resources>
+	<mvc:resources location="/WEB-IN/statics/js" mapping="/js/**"></mvc:resources>
 	<mvc:resources location="/WEB-IN/statics/images" mapping="/images/**"></mvc:resources>
 
 	<!-- 视图解析器 
