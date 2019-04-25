@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>hello springmvc</h1>
+	${u.account}----${u.username}
 </body>
 </html>
