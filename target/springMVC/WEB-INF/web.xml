@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+  version="3.1">
+
+
+	<!-- 
+		配置springMVC核心配置文件的三种方式
+		1.基于servlet-name的方式进行配置，可以再web-inf/下面去简历一个叫<servlet-name>-servlet.xml文件
+		2.基于namespace的方式，来打破第一种规则，用namespace可以随心所欲叫任何名字。但是必须还是放在web-inf下
+		3.基于configlocation的方式，可以叫任何名字，也可以防止任意classpath目录进行定义。
+	
+	-->
+	<servlet>
+		<servlet-name>tmall</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>tmall</servlet-name>
+		<url-pattern></url-pattern>
+	</servlet-mapping>
+</web-app>
