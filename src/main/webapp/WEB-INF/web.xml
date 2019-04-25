@@ -22,6 +22,12 @@
 	<servlet>
 		<servlet-name>tmall</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 方式1已配置成功 -->
+		<!-- 方式2 -->
+		<init-param>
+			<param-name>namespace</param-name>
+			<param-value>janespringmvc</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>tmall</servlet-name>
