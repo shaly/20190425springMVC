@@ -11,41 +11,40 @@ import com.syf.study.entity.User;
 public class IndexController {
 
 	@RequestMapping("/index")
-	public String index() {	
+	public String index() {
 		return "index";
 	}
-	
+
 	@RequestMapping("/index1")
 	public String index1(ModelMap model) {
 		System.out.println("访问首页1***********");
-		User u=new User();
+		User u = new User();
 		u.setAccount("1");
 		u.setUsername("Jane");
-		model.addAttribute("u",u);		
+		model.addAttribute("u", u);
 		return "index";
 	}
 
 	@RequestMapping("/index2")
 	public ModelAndView index2() {
 		System.out.println("访问首页2***********");
-		ModelAndView m=new ModelAndView();
-		User u=new User();
+		ModelAndView m = new ModelAndView();
+		User u = new User();
 		u.setAccount("2");
 		u.setUsername("Jane");
-		m.addObject("u",u);	
+		m.addObject("u", u);
 		m.setViewName("index");
 		return m;
 	}
-	
+
 	@RequestMapping("/index3")
 	public String index3(ModelMap model) {
 		System.out.println("访问首页3***********");
-		User u=new User();
+		User u = new User();
 		u.setAccount("3");
 		u.setUsername("Jane");
-		model.addAttribute("u",u);		
+		model.addAttribute("u", u);
 		return "forward:/WEB-INF/forward_page/index.jsp";
 	}
-	
-	
+
 }

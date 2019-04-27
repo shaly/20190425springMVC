@@ -1,0 +1,11 @@
+		DispatcherServlet：调度
+		initStrategies:实例化策略
+		initMultipartResolver(context);//文件上传解析，如果请求类型是multipart将通过MultipartResolver进行文件上传解析；
+		initLocaleResolver(context);
+		initThemeResolver(context);
+		initHandlerMappings(context);
+		initHandlerAdapters(context);
+		initHandlerExceptionResolvers(context);
+		initRequestToViewNameTranslator(context);
+		initViewResolvers(context);
+		initFlashMapManager(context);
