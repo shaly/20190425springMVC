@@ -53,4 +53,24 @@ public class RequestController {
 		System.out.println("params2***********age="+age);
 		return "savePage";
 	}
+	//==================通配路径===============
+
+	//通配：query123、querya、queryb等等
+	@RequestMapping("/query*")
+	public String query1( ) {
+		System.out.println("query1***********");
+		return "savePage";
+	}
+	//通配：query123、querya、queryb等等
+	@RequestMapping("/query**")
+	public String query2( ) {
+		System.out.println("query2***********");
+		return "savePage";
+	}
+	//通配：query/123/uid、query/a/uid、query/b/uid等等
+	@RequestMapping(value="/query/**/uid",params="id")
+	public String query3(@RequestParam("id")Integer id ) {
+		System.out.println("query3***********");
+		return "savePage";
+	}
 }
