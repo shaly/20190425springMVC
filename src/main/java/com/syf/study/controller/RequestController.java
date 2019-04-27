@@ -73,4 +73,32 @@ public class RequestController {
 		System.out.println("query3***********");
 		return "savePage";
 	}
+	//==================接口请求要求===============
+	//值接受content-type="application/json"的请求
+	//在请求头中设置：content-type为application/json
+	/**
+	 * jquery vue.js中异步访问时设置
+	 * 
+	 * jquery:eg
+	 * 		$.ajax({
+	 * 			type:"get",//或post
+	 * 			url:"http://localhost:8080/springMVC/user/jsonContent?id=2",
+	 * 			contentType:"application/json;charset=utf-8",
+	 * 			success:function(){
+	 * 			
+	 * 			}
+	 * 		})
+	 */
+	@RequestMapping(value="/jsonContent",params="id",consumes="application/json")
+	public String jsonContent(@RequestParam("id")Integer id ) {
+		System.out.println("jsonContent***********id="+id);
+		return "savePage";
+	}
+	
+	//只接收请求头包含content-type的请求
+	@RequestMapping(value="/headers",params="id",headers="content-type")
+	public String headers(@RequestParam("id")Integer id ) {
+		System.out.println("jsonProduces***********id="+id);
+		return "savePage";
+	}
 }
