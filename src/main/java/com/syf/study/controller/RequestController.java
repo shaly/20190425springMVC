@@ -61,13 +61,13 @@ public class RequestController {
 		System.out.println("query1***********");
 		return "savePage";
 	}
-	//通配：query123、querya、queryb等等
-	@RequestMapping("/query**")
+	//通配：query2,此地址不与“/query*”冲突，如果请求query2会进入此方法，“/query*”只是不存在时进行匹配
+	@RequestMapping("/query2")
 	public String query2( ) {
 		System.out.println("query2***********");
 		return "savePage";
 	}
-	//通配：query/123/uid、query/a/uid、query/b/uid等等
+	//通配：query/uid?id=1、query/123/uid、query/a/uid、query/b/uid等等
 	@RequestMapping(value="/query/**/uid",params="id")
 	public String query3(@RequestParam("id")Integer id ) {
 		System.out.println("query3***********");
