@@ -1,7 +1,9 @@
 package com.syf.study.controller;
 
 import java.util.Map;
- 
+
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam; 
 import org.springframework.web.bind.annotation.RestController;
@@ -70,14 +72,17 @@ public class ParamterController {
 		return u.toString()+c.toString();
 	}
 	
-//	@InitBinder("user")
-//	public void initUser(WebDataBinder binder) {
-//		binder.setFieldDefaultPrefix("user.");
-//	}
-//	@InitBinder("car")
-//	public void initCar(WebDataBinder binder) {
-//		binder.setFieldDefaultPrefix("car.");
-//	}
+	//区分相同属性名传参
+	//此时相同属性id中只有user的id属性有值为1=》http://localhost:8080/springMVC/o2?user.id=1&account=001&password=990&pp=0&name=车车
+	//此时相同属性id中只有car的id属性有值为1=》http://localhost:8080/springMVC/o2?car.id=1&account=001&password=990&pp=0&name=车车
+	@InitBinder("user")
+	public void initUser(WebDataBinder binder) {
+		binder.setFieldDefaultPrefix("user.");
+	}
+	@InitBinder("car")
+	public void initCar(WebDataBinder binder) {
+		binder.setFieldDefaultPrefix("car.");
+	}
 	
 	//http://localhost:8080/springMVC/o3?objName[0]=0&objName[1]=阿斯蒂芬&objName[5]=安安&account=001&password=990&cars[0].name=第一辆车&cars[0].id=0&cars[1].name=第二辆车&cars[4].id=0
 	//对应的值会加载到对象中，多余的值不影响访问,List和数组都可以用下标来指定，没有值的下标数据为空比如0和5设置了值，1到4没设置值，那么1到4的值都为空
