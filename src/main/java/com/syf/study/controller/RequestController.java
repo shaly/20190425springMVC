@@ -13,26 +13,28 @@ public class RequestController {
 
 	//只能GET
 	@RequestMapping(value="/find",method=RequestMethod.GET)
-	public String find(ModelMap model) {
+	public String find( ) {
 		System.out.println("find***********");
 		return "savePage";
 	}
 	//只能POST
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public String save(ModelMap model) {
+	public String save( ) {
 		System.out.println("save***********");
 		return "savePage";
 	}
 	//只能POST
 	@RequestMapping(value="/update",method=RequestMethod.POST)
-	public String update(ModelMap model) {
+	public String update( ) {
 		System.out.println("update***********");
 		return "savePage";
 	}
 	//都行
 	@RequestMapping("/delete")
-	public String delete(ModelMap model) {
+	public String delete( ) {
 		System.out.println("delete***********");
 		return "savePage";
 	}
+	
+	
 }
