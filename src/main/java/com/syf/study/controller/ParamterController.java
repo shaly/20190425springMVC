@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam; 
 import org.springframework.web.bind.annotation.RestController;
@@ -100,8 +101,16 @@ public class ParamterController {
 		return map;
 	}
 	
-	
-	
+
+	//================restful参数的获取===============
+	//此参数无法通过request.getParmater获取
+	//http://localhost:8080/springMVC/restful1/1/Jane
+	@RequestMapping("/restful1/{id}/{name}")
+	public String restful1(@PathVariable("id")Integer uid,@PathVariable("name")String name) {
+
+		System.out.println("restful1***********uid="+uid+"name="+name);
+		return "id="+uid+";name="+name;
+	}
 	
 	
 }
