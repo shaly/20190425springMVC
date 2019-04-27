@@ -44,7 +44,7 @@ public class RequestController {
 		System.out.println("params***********uid="+uid);
 		return "savePage";
 	}
-	@RequestMapping(value="/params2",params= {"uid","userName","age"})//get,post请求都行，要求所有参数必须在，可为空
+	@RequestMapping(path="/params2",params= {"uid","userName","age"})//get,post请求都行，要求所有参数必须在，可为空
 	public String params2(@RequestParam("uid")Integer uid,
 			@RequestParam("userName")String userName,
 			@RequestParam("age")Integer age) {
