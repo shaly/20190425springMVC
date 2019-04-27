@@ -45,6 +45,20 @@
 		<artifactId>jstl</artifactId>
 		<version>1.2</version>
 	</dependency>
+	<!-- @ResponseBody注解进行返回List<对象>的json数据时出现了：
+	nested exception is java.lang.IllegalArgumentException: No converter found for return value of type: class 
+	原因：这是因为springmvc默认是没有对象转换成json的转换器的，需要手动添加jackson依赖。
+	-->
+	<dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.5.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.5.4</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>springMVC</finalName>

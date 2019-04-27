@@ -1,2 +1,6 @@
+com\syf\study\entity\Car.class
+com\syf\study\entity\Order.class
+com\syf\study\controller\RequestController.class
 com\syf\study\entity\User.class
+com\syf\study\controller\ParamterController.class
 com\syf\study\controller\IndexController.class

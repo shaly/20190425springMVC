@@ -37,8 +37,6 @@
 	<!-- 开启springMVC的annotation，启用springMVC的annotation让开发者在springMVC中能够去使用@AutoWrite,@Resource等这些配置。该配置是默认开启的，不写也行，但写出来方便理解 -->
 	<context:annotation-config></context:annotation-config>
 	
-	<!-- 配置注解驱动，可以让request中一些请求参数或者一些请求信息完成注入和转换的操作。其中包括json/xml,转换 -->
-	<mvc:annotation-driven></mvc:annotation-driven>
 
 	<!-- 静态资源的处理 -->
 	<mvc:resources location="/WEB-IN/statics/css" mapping="/css/**"></mvc:resources>
@@ -56,5 +54,7 @@
 	</bean>
 
 
+	<!-- 配置注解驱动，可以让request中一些请求参数或者一些请求信息完成注入和转换的操作。其中包括json/xml,转换 -->
+	<mvc:annotation-driven/>
 
 </beans>
