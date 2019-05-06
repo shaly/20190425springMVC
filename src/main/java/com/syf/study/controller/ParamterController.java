@@ -1,10 +1,15 @@
 package com.syf.study.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam; 
 import org.springframework.web.bind.annotation.RestController;
@@ -100,7 +105,7 @@ public class ParamterController {
 		System.out.println("o4***********c="+map.toString());
 		return map;
 	}
-	
+
 
 	//================restful参数的获取===============
 	//此参数无法通过request.getParmater获取
@@ -111,6 +116,8 @@ public class ParamterController {
 		System.out.println("restful1***********uid="+uid+"name="+name);
 		return "id="+uid+";name="+name;
 	}
+
+	//@PathVariable > @RequestParam(参数很长并且很乱再用这个)
 	
 	
 	/**
@@ -131,6 +138,7 @@ public class ParamterController {
 		return age+"";
 	}
 
+	//======================= 【2】 ========================
 	//http://localhost:8080/springMVC/pUnBase?age=1
 	//age不传返回null
 	@RequestMapping("/pUnBase")
@@ -138,7 +146,6 @@ public class ParamterController {
 		System.out.println("pUnBase年龄："+age);
 		return age+"";
 	}
-	//======================= 【2】 ========================
 	//http://localhost:8080/springMVC/pObject?id=123321&orders[1].objName[1]=Jane
 	//http://localhost:8080/springMVC/pObject?id=123321&orders[1].cars[1].name=Jane
 	@RequestMapping("/pObject")
@@ -147,7 +154,25 @@ public class ParamterController {
 		return user;
 	}
 	//======================= 【3】 ========================
+	@RequestMapping("/pListObject")
+	public User pListObject(User user) {//属性名指向变量名
+		System.out.println("user对象为："+user);
+		return user;
+	}
 	//======================= 【4】 ========================
+	//上方已有
 	//======================= 【5】 ========================
+	//上方已有
+	
+	
+	
+
+	@RequestMapping("/pRequest")
+	public void pRequest(HttpServletRequest req) {//属性名指向变量名
+		System.out.println("name："+req.getParameter("name"));
+		System.out.println("age："+req.getParameter("age"));
+		System.out.println("sex："+req.getParameter("sex"));
+	}
+	
 	
 }
