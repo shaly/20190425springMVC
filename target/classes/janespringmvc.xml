@@ -42,17 +42,25 @@
 	
 	<!-- 名字和DateFormatter.java类名一致 -->
 	<!-- 配置注解驱动，可以让request中一些请求参数或者一些请求信息完成注入和转换的操作。其中就包括json/xml，转换 -->
-	<mvc:annotation-driven conversion-service="dateFormatter"></mvc:annotation-driven>
+	<!-- <mvc:annotation-driven conversion-service="dateFormatter"></mvc:annotation-driven> -->
 	<!-- 名字和DateFormatter.java类名一致 -->
 	<!-- 配置全局范围内的日期烈性转换   String Date -->
-	<bean id="dateFormatter" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+<!-- 	<bean id="dateFormatter" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="formatters">
 			<list>
 				<bean class="com.syf.study.config.DateFormatter"></bean>
 			</list>
 		</property>
+	</bean> -->
+	<!-- 请求格式化date参数方式3 -->
+ 	<mvc:annotation-driven conversion-service="dateConverts"></mvc:annotation-driven>
+ 	<bean id="dateConverts" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="com.syf.study.config.DateConverts"></bean>
+			</list>
+		</property>
 	</bean>
-
 	<!-- 静态资源的处理 -->
 	<mvc:resources location="/WEB-IN/statics/css" mapping="/css/**"></mvc:resources>
 	<mvc:resources location="/WEB-IN/statics/js" mapping="/js/**"></mvc:resources>
