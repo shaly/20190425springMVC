@@ -113,4 +113,34 @@ public class ParamterController {
 	}
 	
 	
+	/**
+	 * 1.基础数据类型注入
+	 * 2.封装数据类型的注入
+	 * 3.对象
+	 * 4.map
+	 * 5.list
+	 * 6.set
+	 * 多对象注入
+	 */
+	//======================= 【1】 ========================
+	//http://localhost:8080/springMVC/pBase?age=1
+	//age不传会报错
+	@RequestMapping("/pBase")
+	public String pBase(int age) {//属性名指向变量名
+		System.out.println("age年龄："+age);
+		return age+"";
+	}
+
+	//http://localhost:8080/springMVC/pUnBase?age=1
+	//age不传返回null
+	@RequestMapping("/pUnBase")
+	public String pUnBase(Integer age) {//属性名指向变量名
+		System.out.println("pUnBase年龄："+age);
+		return age+"";
+	}
+	//======================= 【2】 ========================
+	//======================= 【3】 ========================
+	//======================= 【4】 ========================
+	//======================= 【5】 ========================
+	
 }
