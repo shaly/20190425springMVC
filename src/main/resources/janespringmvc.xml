@@ -57,7 +57,9 @@
  	<bean id="dateConverts" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
 			<list>
-				<bean class="com.syf.study.config.DateConverts"></bean>
+				<bean class="com.syf.study.config.DateConverts">
+					<property name="formatStr" value="yyyy-MM-dd HH:mm:ss"></property>
+				</bean>
 			</list>
 		</property>
 	</bean>

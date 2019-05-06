@@ -52,12 +52,14 @@
 			</list>
 		</property>
 	</bean> -->
-	<!-- 请求格式化date参数方式3 -->
+	<!-- 请求格式化date参数方式3 converters -->
  	<mvc:annotation-driven conversion-service="dateConverts"></mvc:annotation-driven>
  	<bean id="dateConverts" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
 			<list>
-				<bean class="com.syf.study.config.DateConverts"></bean>
+				<bean class="com.syf.study.config.DateConverts">
+					<property name="formatStr" value="yyyy-MM-dd HH:mm:ss"></property>
+				</bean>
 			</list>
 		</property>
 	</bean>

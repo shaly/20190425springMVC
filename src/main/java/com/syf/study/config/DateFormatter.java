@@ -10,9 +10,10 @@ import org.springframework.format.Formatter;
 
 public class DateFormatter implements Formatter<Date> {
 
+	private String formatStr="yyyy-MM-dd";
 	@Override
 	public Date parse(String text, Locale locale) throws ParseException {
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf=new SimpleDateFormat(formatStr);
 		return sdf.parse(text);
 	}
 	@Override
@@ -21,5 +22,13 @@ public class DateFormatter implements Formatter<Date> {
 		return null;
 	}
 
+
+	public String getFormatStr() {
+		return formatStr;
+	}
+
+	public void setFormatStr(String formatStr) {
+		this.formatStr = formatStr;
+	}
 
 }
