@@ -139,6 +139,13 @@ public class ParamterController {
 		return age+"";
 	}
 	//======================= 【2】 ========================
+	//http://localhost:8080/springMVC/pObject?id=123321&orders[1].objName[1]=Jane
+	//http://localhost:8080/springMVC/pObject?id=123321&orders[1].cars[1].name=Jane
+	@RequestMapping("/pObject")
+	public User pObject(User user) {//属性名指向变量名
+		System.out.println("user对象为："+user);
+		return user;
+	}
 	//======================= 【3】 ========================
 	//======================= 【4】 ========================
 	//======================= 【5】 ========================
