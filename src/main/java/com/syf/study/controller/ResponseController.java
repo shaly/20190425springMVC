@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.syf.study.entity.User;
+import com.syf.study.entity.UserXml;
 
 //@Controller
 //public class ResponseController {
@@ -24,5 +25,11 @@ public class ResponseController {
 		return u;
 	}
 
+	//http://localhost:8080/springMVC/testXml.xml   //返回xml格式
+	//http://localhost:8080/springMVC/testXml.json  //返回json格式
+	@RequestMapping("/testXml")
+	public UserXml test1(UserXml u) {
+		return u;
+	}
 }
 
