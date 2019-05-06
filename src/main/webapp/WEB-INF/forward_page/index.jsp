@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+forward_page${username}
 	<h1>hello springmvc forward page</h1>
 	${u.account}----${u.username}
 </body>
