@@ -26,6 +26,10 @@ public class TranslateDataContrller {
 		return d;
 	}
 	
-
+	@InitBinder
+	public void initBinder(WebDataBinder bind) {
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		bind.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+	}
 
 }
