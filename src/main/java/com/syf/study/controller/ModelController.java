@@ -1,5 +1,7 @@
 package com.syf.study.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -12,13 +14,13 @@ import com.syf.study.entity.Car;
 import com.syf.study.entity.User;
 
 @Controller
-@SessionAttributes({"user","car"})
+//@SessionAttributes({"user","car"})
 public class ModelController {
 
-	@ModelAttribute("user")
-	public User getUser() {
-		return new User();
-	}
+//	@ModelAttribute("user")
+//	public User getUser() {
+//		return new User();
+//	}
 	/**
 	 * request作用级别的方式
 	 * ModelAndView
@@ -79,6 +81,16 @@ public class ModelController {
 	@GetMapping("/handler4")
 	public String handler4(@ModelAttribute("user")User u) {//只要给参数加入@ModelAttribute，会自动把对应数据放入到ModelMap中
 		
+		return "handler";
+	}
+
+	
+	@GetMapping("/handler5")
+	public String handler5(HttpSession session) {//session作用域的最简便方式
+		User u=new User();
+		u.setAccount("5");
+		u.setId(55);
+		session.setAttribute("user", u);
 		return "handler";
 	}
 }
