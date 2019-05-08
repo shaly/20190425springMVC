@@ -72,7 +72,7 @@ public class ModelController {
 
 	
 	@GetMapping("/handler4")
-	public String handler4(@ModelAttribute("user")User u) {
+	public String handler4(@ModelAttribute("user")User u) {//只要给参数加入@ModelAttribute，会自动把对应数据放入到ModelMap中
 		u.setAccount("123");
 		u.setId(99);
 		return "handler";
