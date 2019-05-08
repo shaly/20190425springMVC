@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.syf.study.entity.Car;
@@ -26,7 +27,7 @@ public class ModelController {
 	 * @CookieAttribute
 	 */
 	
-	//ModelAndView
+	//ModelAndView底层也是使用ModelMap进行存值，只不过前者多一个视图控制
 	//默认返回的页面为请求地址/handler指向/springMVC/WEB-INF/pages/handler.jsp,
 	//如果请求地址为/a/handler，则返回指向/springMVC/WEB-INF/pages/a/handler.jsp,可以通过m.setViewName("handler");修改返回地址
 	@GetMapping("/a/handler")
@@ -68,5 +69,12 @@ public class ModelController {
 		m.addAttribute(u);//等价于m.addAttribute("user",u);
 		return "handler";
 	}
+
 	
+	@GetMapping("/handler4")
+	public String handler4(@ModelAttribute("user")User u) {
+		u.setAccount("123");
+		u.setId(99);
+		return "handler";
+	}
 }
