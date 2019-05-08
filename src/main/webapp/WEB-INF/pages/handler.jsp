@@ -8,8 +8,10 @@
 </head>
 <body>
 	<h1>hello springmvc</h1>
-	${user.account}----${user.username}
+	${user.account}----${user.id}
 	<br/>
 	*${car.name}
+	<br/>
+	${user2.account}----${user2.id}
 </body>
 </html>

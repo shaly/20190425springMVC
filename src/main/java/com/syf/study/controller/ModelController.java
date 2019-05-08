@@ -40,10 +40,14 @@ public class ModelController {
 		u1.setAccount("111");
 		u1.setId(111);
 		m.addObject(u1);//等价于m.addObject("user",u);此处会将上方覆盖
-		m.setViewName("handler");
 		Car c=new Car();
 		c.setName("car name");
 		m.addObject(c);//等价于m.addObject("car",u);
+		User u2=new User();
+		u2.setAccount("222");
+		u2.setId(222);
+		m.addObject("user2",u2);//指定返回值名称,不会覆盖
+		m.setViewName("handler");
 		return m;
 	}
 
