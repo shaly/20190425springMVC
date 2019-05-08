@@ -14,7 +14,7 @@ import com.syf.study.entity.Car;
 import com.syf.study.entity.User;
 
 @Controller
-@SessionAttributes({"user","car"})
+//@SessionAttributes(value={"user","car"},types= {User.class,Car.class})
 public class ModelController {
 
 	@ModelAttribute("user")//SessionAttributes中@ModelAttribute隐式调用,@SessionAttributes结合使用@ModelAttribute时必须加指定对象的隐式构造方法
@@ -86,7 +86,7 @@ public class ModelController {
 	
 	
 	@GetMapping("/handler5")
-	public String handler5(HttpSession session) {//session作用域的最简便方式
+	public String handler5(HttpSession session) {//此session做用域无效
 		User u=new User();
 		u.setAccount("5");
 		u.setId(55);
@@ -100,5 +100,10 @@ public class ModelController {
 	public String handler6(@ModelAttribute("car")Car u) {//只要给参数加入@ModelAttribute，会自动把对应数据放入到ModelMap中
 		
 		return "handler";
+	}
+
+	@ModelAttribute("car")
+	public Car getCar() {
+		return new Car();
 	}
 }
