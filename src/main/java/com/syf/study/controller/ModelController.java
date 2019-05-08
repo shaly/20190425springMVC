@@ -5,15 +5,20 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.syf.study.entity.Car;
 import com.syf.study.entity.User;
 
 @Controller
+@SessionAttributes({"user","car"})
 public class ModelController {
 
-	
+	@ModelAttribute("user")
+	public User getUser() {
+		return new User();
+	}
 	/**
 	 * request作用级别的方式
 	 * ModelAndView
@@ -73,8 +78,7 @@ public class ModelController {
 	
 	@GetMapping("/handler4")
 	public String handler4(@ModelAttribute("user")User u) {//只要给参数加入@ModelAttribute，会自动把对应数据放入到ModelMap中
-		u.setAccount("123");
-		u.setId(99);
+		
 		return "handler";
 	}
 }

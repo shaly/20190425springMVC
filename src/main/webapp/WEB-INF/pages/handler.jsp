@@ -8,9 +8,13 @@
 </head>
 <body>
 	<h1>hello springmvc</h1>
-	${user.account}----${user.id}
+	${requestScope.user.account}--request--${requestScope.user.id}
 	<br/>
-	*${car.name}
+	${sessionScope.user.account}--session--${sessionScope.user.id}
+	<br/>
+	*${requestScope.car.name}
+	<br/>
+	*${sessionScope.car.name}
 	<br/>
 	${user2.account}----${user2.id}
 </body>
