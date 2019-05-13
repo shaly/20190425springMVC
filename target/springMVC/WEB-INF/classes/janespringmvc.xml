@@ -37,7 +37,32 @@
 	<!-- 开启springMVC的annotation，启用springMVC的annotation让开发者在springMVC中能够去使用@AutoWrite,@Resource等这些配置。该配置是默认开启的，不写也行，但写出来方便理解 -->
 	<context:annotation-config></context:annotation-config>
 	
-
+	<!-- 配置注解驱动，可以让request中一些请求参数或者一些请求信息完成注入和转换的操作。其中包括json/xml,转换 -->
+	<mvc:annotation-driven/>
+	
+	<!-- 名字和DateFormatter.java类名一致 -->
+	<!-- 配置注解驱动，可以让request中一些请求参数或者一些请求信息完成注入和转换的操作。其中就包括json/xml，转换 -->
+	<!-- <mvc:annotation-driven conversion-service="dateFormatter"></mvc:annotation-driven> -->
+	<!-- 名字和DateFormatter.java类名一致 -->
+	<!-- 配置全局范围内的日期烈性转换   String Date -->
+<!-- 	<bean id="dateFormatter" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="formatters">
+			<list>
+				<bean class="com.syf.study.config.DateFormatter"></bean>
+			</list>
+		</property>
+	</bean> -->
+	<!-- 请求格式化date参数方式3 converters -->
+ 	<mvc:annotation-driven conversion-service="dateConverts"></mvc:annotation-driven>
+ 	<bean id="dateConverts" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="com.syf.study.config.DateConverts">
+					<property name="formatStr" value="yyyy-MM-dd HH:mm:ss"></property>
+				</bean>
+			</list>
+		</property>
+	</bean>
 	<!-- 静态资源的处理 -->
 	<mvc:resources location="/WEB-IN/statics/css" mapping="/css/**"></mvc:resources>
 	<mvc:resources location="/WEB-IN/statics/js" mapping="/js/**"></mvc:resources>
@@ -46,15 +71,55 @@
 	<!-- 视图解析器 
 		对象模型的视图解析器，下面是一个默认的视图解析器
 	-->
-	<bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- <bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
 		<property name="prefix" value="/WEB-INF/pages/"></property>
 		<property name="suffix" value=".jsp"></property>
 		<property name="exposeContextBeansAsAttributes" value="true"></property>
+	</bean> -->
+
+	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/pages/"></property>
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="template_update_delay">1</prop>
+				<prop key="tag_syntax">auto_detect</prop><!-- square_bracket|auto_detect设置标签类型两种：[]和<>.[]这种标签 -->
+				
+				<prop key="default_encoding">UTF-8</prop>
+				<prop key="output_encoding">UTF-8</prop>
+				<prop key="locale">zh_CN</prop>
+				<prop key="date_format">yyyy-MM-dd</prop>
+				<prop key="time_format">HH:mm:ss</prop>
+				<prop key="boolean_format">true,false</prop>
+				<prop key="whitespace_stripping">true</prop>
+				<prop key="url_escaping_charset">UTF-8</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="number_format">#.###</prop><!-- 设置数字格式以免出现000.00 -->
+				<prop key="classic_compatible">true</prop><!-- 可以满足一般需求。默认情况变量为null则替换为空字符串，如果需要自定义，写上${ -->
+				<!-- <prop key="template_exception_handler">com.tz.core.FreemarkerExceptionHandler</prop> -->
+				<prop key="template_exception_handler">html_debug</prop><!-- ignore,debug,html_debug,rethrow -->
+			</props>
+		</property>
+		<property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
+
+	<!-- 将视图解析器修改为freemarker解析器 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"></property>
+		<property name="contentType" value="text/html"></property>
+		<property name="exposeRequestAttributes" value="true"></property>
+		<property name="exposeSessionAttributes" value="true"></property>
+		<property name="exposeSpringMacroHelpers" value="true"></property>
+		<property name="allowSessionOverride" value="true"></property>
+		<property name="allowRequestOverride" value="true"></property>
+		<property name="cache" value="true"></property>
+		<property name="suffix" value=".html"></property><!-- 默认是.ftl格式 -->
+		<property name="order" value="0"></property>
 	</bean>
 
 
-	<!-- 配置注解驱动，可以让request中一些请求参数或者一些请求信息完成注入和转换的操作。其中包括json/xml,转换 -->
-	<mvc:annotation-driven/>
+
+
+
 
 </beans>

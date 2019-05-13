@@ -9,5 +9,6 @@
 <body>
 	<h1>hello springmvc</h1>
 	${u.account}----${u.username}
+	*${username}
 </body>
 </html>
