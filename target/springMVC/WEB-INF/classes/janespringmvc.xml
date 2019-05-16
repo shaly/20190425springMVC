@@ -78,6 +78,16 @@
 		<property name="exposeContextBeansAsAttributes" value="true"></property>
 	</bean> -->
 
+	<!-- 文件上传配置，除了id=“multipartResolver”命名有要求必须和web.xml中的DispatcherServlet的MULTIPART_RESOLVER_BEAN_NAME属性值一致之外，其它选项都可以选择自定义 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<property name="maxInMemorySize" value="524880"></property><!-- 设置最大上限，单位是字节(B)，这里是5MB.默认大小是1024=1KB,默认值会自动化设置。B-KB-MB-GB -->
+		<property name="uploadTempDir" value="file:/D://SOFT_STUDY//eclipse//runTime//dmpfile"></property><!-- 临时文件夹，上生产的时候不要写磁盘绝对路径，写相对路径 -->
+	
+	</bean>
+
+
+
 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<property name="templateLoaderPath" value="/WEB-INF/pages/"></property>
 		<property name="freemarkerSettings">
@@ -118,6 +128,9 @@
 	</bean>
 
 
+	<mvc:resources location="/WEB-INF/statics/css/" mapping="/css/**"/>
+	<mvc:resources location="/WEB-INF/statics/js/" mapping="/js/**"/>
+	<mvc:resources location="/WEB-INF/statics/images/" mapping="/images/**"/>
 
 
 

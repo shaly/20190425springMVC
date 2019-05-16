@@ -2,6 +2,8 @@ package com.syf.study.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,20 +25,21 @@ public class FileUploadController {
 	
 
 	@RequestMapping("/uploadFile")
-	@ResponseBody//Òì²½´¦Àí
-	public String uploadFile(@RequestParam("file")MultipartFile file//ÎÄ¼þÔÝ´æÓÚ£ºD://SOFT_STUDY//eclipse//runTime//dmpfile
+	@ResponseBody//ï¿½ì²½ï¿½ï¿½ï¿½ï¿½
+	public String uploadFile(@RequestParam("file")MultipartFile file//ï¿½Ä¼ï¿½ï¿½Ý´ï¿½ï¿½Ú£ï¿½D://SOFT_STUDY//eclipse//runTime//dmpfile
 			,HttpServletRequest req) {
+
 		if(file.isEmpty()) {
 			return "file";
 		}else {
-			/**»ñÈ¡·þÎñÆ÷µÄ¸ùÄ¿Â¼/upload;------ÏîÄ¿¿ª·¢µÄÊ±ºòÐ´ÎÄ¼þ¾ßÌå´æ´¢µÄÎ»ÖÃ
+			/**ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½Ä¿Â¼/upload;------ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ð´ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½Î»ï¿½ï¿½
 			 * eg:D:/SOFT_STUDY/eclipse/runTime/rumo/class001/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/springMVC/upload*/
 			String root=req.getServletContext().getRealPath("/upload");
 			File f=new File(root);
 			if(!f.exists()) f.mkdirs();
-			//ÎÄ¼þÖØÃüÃû
+			//ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			String fileName=UUID.randomUUID().toString();
-			//ÎÄ¼þºó×ºÃû
+			//ï¿½Ä¼ï¿½ï¿½ï¿½×ºï¿½ï¿½
 			String endName=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 			File ff=new File(f,fileName+endName);
 			try {
@@ -54,4 +57,53 @@ public class FileUploadController {
 		}
 	}
 
+	
+
+	@RequestMapping("/toUploadFile2")
+	public String toUploadFile2() {
+		
+		return "upload2";
+	}
+	
+	
+
+
+	@RequestMapping("/uploadFile2")
+	@ResponseBody//ï¿½ì²½ï¿½ï¿½ï¿½ï¿½
+	public Map<String, Object> uploadFile2(@RequestParam("fileName")MultipartFile file//ï¿½Ä¼ï¿½ï¿½Ý´ï¿½ï¿½Ú£ï¿½D://SOFT_STUDY//eclipse//runTime//dmpfile
+			,HttpServletRequest req) {
+		Map<String ,Object> map=new HashMap<String ,Object>();
+		map.put("fileName", file.getName());
+		if(file.isEmpty()) {
+			return map;
+		}else {
+			/**ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½Ä¿Â¼/upload;------ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ð´ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½Î»ï¿½ï¿½
+			 * eg:D:/SOFT_STUDY/eclipse/runTime/rumo/class001/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/springMVC/upload*/
+			String root=req.getServletContext().getRealPath("/upload");
+			File f=new File(root);
+			if(!f.exists()) f.mkdirs();
+			//ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			String fileName=UUID.randomUUID().toString();
+			//ï¿½Ä¼ï¿½ï¿½ï¿½×ºï¿½ï¿½
+			String endName=file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+			File ff=new File(f,fileName+endName);
+			try {
+				file.transferTo(ff);
+				map.put("fileName", file.getName());
+				map.put("size", file.getSize());
+				map.put("name", fileName+endName);
+				map.put("endName", endName);
+				map.put("url", "upload/"+ fileName+endName);
+				return map;
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return map;
+		}
+	}
+
+	
+	
 }
