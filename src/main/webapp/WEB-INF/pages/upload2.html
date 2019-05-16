@@ -29,6 +29,9 @@
 		//初始化Web Uploader
 		var BASE_URL = "http://localhost:8080/springMVC";
 		var uploader = WebUploader.create({
+			formData:{
+				dir:"/course"
+			},
 
 			// 选完文件后，是否自动上传。
 			auto : true,

@@ -2,6 +2,8 @@ package com.syf.study.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -77,10 +79,15 @@ public class FileUploadController {
 		if(file.isEmpty()) {
 			return map;
 		}else {
-			/**��ȡ�������ĸ�Ŀ¼/upload;------��Ŀ������ʱ��д�ļ�����洢��λ��
+			String dir=req.getParameter("dir");
+			
+			/**文件上传的地址
 			 * eg:D:/SOFT_STUDY/eclipse/runTime/rumo/class001/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/springMVC/upload*/
 			String root=req.getServletContext().getRealPath("/upload");
-			File f=new File(root);
+			String datePath="/"+new SimpleDateFormat("yyyy/MM/dd").format(new Date());
+			String saveUrl=root+datePath+dir;
+			System.out.println("*********文件存储地址为："+root);
+			File f=new File(saveUrl);
 			if(!f.exists()) f.mkdirs();
 			//�ļ�������
 			String fileName=UUID.randomUUID().toString();
@@ -93,7 +100,7 @@ public class FileUploadController {
 				map.put("size", file.getSize());
 				map.put("name", fileName+endName);
 				map.put("endName", endName);
-				map.put("url", "upload/"+ fileName+endName);
+				map.put("url", "upload"+datePath+(dir==null?"":dir)+ "/"+fileName+endName);
 				return map;
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
