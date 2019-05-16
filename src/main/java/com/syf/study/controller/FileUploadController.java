@@ -80,6 +80,7 @@ public class FileUploadController {
 			return map;
 		}else {
 			String dir=req.getParameter("dir");
+			String age=req.getParameter("age");
 			
 			/**文件上传的地址
 			 * eg:D:/SOFT_STUDY/eclipse/runTime/rumo/class001/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/springMVC/upload*/
@@ -87,6 +88,7 @@ public class FileUploadController {
 			String datePath="/"+new SimpleDateFormat("yyyy/MM/dd").format(new Date());
 			String saveUrl=root+datePath+dir;
 			System.out.println("*********文件存储地址为："+root);
+			System.out.println("*********age为："+age);
 			File f=new File(saveUrl);
 			if(!f.exists()) f.mkdirs();
 			//�ļ�������

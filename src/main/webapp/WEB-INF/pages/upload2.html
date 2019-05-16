@@ -17,6 +17,7 @@
 	<h1>upload page2</h1>
 	<!-- 添加插件，该插件是写html标签时的提示emmet - http://emmet.io/eclipse/updates/ -->
 	<!--dom结构部分-->
+	<input id="dir" value="/course"></input>
 	<div id="uploader-demo">
 		<!--用来存放item-->
 		<div id="fileList" class="uploader-list"></div>
@@ -29,9 +30,9 @@
 		//初始化Web Uploader
 		var BASE_URL = "http://localhost:8080/springMVC";
 		var uploader = WebUploader.create({
-			formData:{
+			/* formData:{
 				dir:"/course"
-			},
+			}, */
 
 			// 选完文件后，是否自动上传。
 			auto : true,
@@ -55,6 +56,13 @@
 			}
 		});
 
+		//动态加载值
+		uploader.on("uploadBeforeSend",function(file,formData){
+			formData.dir=$("#dir").val();
+		})
+		//动态加载值
+		uploader.options.formData.age=2;
+		
 		var $list = $("#fileList");
 		// 当有文件添加进来的时候
 		uploader.on( 'fileQueued', function( file ) {
