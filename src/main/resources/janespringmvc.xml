@@ -134,6 +134,15 @@
 	<mvc:resources location="/upload/" mapping="/upload/**"></mvc:resources>
 	
 
-
+	<!-- 统一异常类处理（id名字不可变，因为在DispatcherServlet中定义好了） -->
+	<bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">/error/main</prop><!-- 指定错误跳转的页面 -->
+				<!-- <prop key="java.lang.ArithmeticException">/err/classError</prop> --><!-- 指定错误跳转的页面 -->
+			</props>
+		</property>
+		<property name="defaultErrorView" value="/error/default"></property><!-- 拦截的错误是未定义的，找不到的的错误就跳转到此页面 -->
+	</bean>
 
 </beans>

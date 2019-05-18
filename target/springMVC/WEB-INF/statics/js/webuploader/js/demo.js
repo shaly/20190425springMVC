@@ -56,7 +56,7 @@ jQuery(function() {
         uploader;
 
     if ( !WebUploader.Uploader.support() ) {
-        alert( 'Web Uploader 不支持您的浏览器！如果你使用的是IE浏览器，请尝试升级 flash 播放器');
+        alert( 'Web Uploader ');
         throw new Error( 'WebUploader does not support the browser you are using.' );
     }
 
@@ -93,6 +93,13 @@ jQuery(function() {
         id: '#filePicker2',
         label: 'continue to add picture'
     });
+    
+
+	//动态加载值
+	uploader.on("uploadBeforeSend",function(file,formData){
+		formData.dir=$("#dir").val();
+	})
+    
 
     // 当有文件添加进来时执行，负责view的创建
     function addFile( file ) {
@@ -265,8 +272,8 @@ jQuery(function() {
         var text = '', stats;
 
         if ( state === 'ready' ) {
-            text = 'choose' + fileCount + ' pictures，it\'s' +
-                    WebUploader.formatSize( fileSize ) + '。';
+            text = 'choose' + fileCount + ' pictures,it\'s' +
+                    WebUploader.formatSize( fileSize ) + '.';
         } else if ( state === 'confirm' ) {
             stats = uploader.getStats();
             if ( stats.uploadFailNum ) {
@@ -276,7 +283,7 @@ jQuery(function() {
 
         } else {
             stats = uploader.getStats();
-            text = 'it\'s ' + fileCount + 'number (' +
+            text = 'it\'s ' + fileCount + ' number (' +
                     WebUploader.formatSize( fileSize )  +
                     '),already upload ' + stats.successNum + ' numbers';
 

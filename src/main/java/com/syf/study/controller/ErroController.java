@@ -16,10 +16,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.DispatcherServlet;
 
 @Controller
 @RequestMapping("/err")
 public class ErroController {
+	
+
+
+	@RequestMapping("/classError")
+	public String classError() {
+		System.out.println("********classError"); 
+		return "/error/main";
+	}
+	
+
+	@RequestMapping("/makeErr")
+	public String makeErr() {
+		System.out.println("********makeErr1"); 
+		int i=1/0; 
+		System.out.println("********makeErr2"); 
+		return "upload";
+	}
+	
+	
 
 	@RequestMapping("/400")
 	public String error400() {

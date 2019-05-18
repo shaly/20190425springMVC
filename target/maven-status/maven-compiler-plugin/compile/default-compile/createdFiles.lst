@@ -1,4 +1,5 @@
 com\syf\study\entity\Car.class
+com\syf\study\controller\ErroController.class
 com\syf\study\controller\RequestController.class
 com\syf\study\entity\UserXml.class
 com\syf\study\config\DateConverts.class
