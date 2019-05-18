@@ -63,11 +63,6 @@
 			</list>
 		</property>
 	</bean>
-	<!-- 静态资源的处理 -->
-	<mvc:resources location="/WEB-IN/statics/css" mapping="/css/**"></mvc:resources>
-	<mvc:resources location="/WEB-IN/statics/js" mapping="/js/**"></mvc:resources>
-	<mvc:resources location="/WEB-IN/statics/images" mapping="/images/**"></mvc:resources>
-
 	<!-- 视图解析器 
 		对象模型的视图解析器，下面是一个默认的视图解析器
 	-->
@@ -128,10 +123,16 @@
 	</bean>
 
 
-	<mvc:resources location="/WEB-INF/statics/css/" mapping="/css/**"/>
-	<mvc:resources location="/WEB-INF/statics/js/" mapping="/js/**"/>
-	<mvc:resources location="/WEB-INF/statics/images/" mapping="/images/**"/>
-
+	<!-- 静态资源的处理 -->
+	<!-- <mvc:resources location="/WEB-IN/statics/css" mapping="/css/**"></mvc:resources>
+	<mvc:resources location="/WEB-IN/statics/js" mapping="/js/**"></mvc:resources>
+	<mvc:resources location="/WEB-IN/statics/images" mapping="/images/**"></mvc:resources>
+ -->
+	<mvc:resources location="/WEB-INF/statics/css/" mapping="/css/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/statics/js/" mapping="/js/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/statics/images/" mapping="/images/**"></mvc:resources>
+	<mvc:resources location="/upload/" mapping="/upload/**"></mvc:resources>
+	
 
 
 

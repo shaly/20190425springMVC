@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>演示 - Web Uploader</title>
+<link rel="stylesheet" type="text/css"
+	href="https://fex.baidu.com/webuploader/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://fex.baidu.com/webuploader/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://fex.baidu.com/webuploader/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://fex.baidu.com/webuploader/css/syntax.css">
+<link rel="stylesheet" type="text/css"
+	href="https://fex.baidu.com/webuploader/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="https://fex.baidu.com/webuploader/css/webuploader.css">
+<link rel="stylesheet" type="text/css"
+	href="https://fex.baidu.com/webuploader/css/demo.css">
+<!-- 
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/syntax.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/webuploader.css">
+<link rel="stylesheet" type="text/css" href="css/demo.css"> -->
+</head>
+<body>
+	<div> 
+		<div class="page-body"> 
+			<div id="post-container" class="container"> 
+				<div class="page-container">
+					<h1 id="demo">Demo</h1> 
+					<p>shop picture,add picture</p> 
+					<div id="uploader" class="wu-example">
+						<div class="queueList filled">
+							<div id="dndArea" class="placeholder element-invisible">
+								<div id="filePicker" class="webuploader-container">
+									<div class="webuploader-pick">click to choose picture</div>
+									<div id="rt_rt_1db0k2rq01kb1au21gs51ubf12qh1"
+										style="position: absolute; inset: 0px auto auto 75.8167px; width: 168px; height: 44px; overflow: hidden;">
+										<input type="file" name="file"
+											class="webuploader-element-invisible" multiple="multiple"
+											accept="image/*"><label
+											style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255) none repeat scroll 0% 0%;"></label>
+									</div>
+								</div>
+								<p>you can pull picture in here , more than 300 number</p>
+							</div>
+							<ul class="filelist">
+								<li id="WU_FILE_0"><p class="title">图片.png</p>
+									<p class="imgWrap">
+										<img
+											src="https://fex.baidu.com/webuploader/data:image/jpeg;base64,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">
+									</p>
+									<p class="progress">
+										<span></span>
+									</p>
+									<div class="file-panel" style="height: 0px;">
+										<span class="cancel">del</span><span class="rotateRight">turn right</span><span
+											class="rotateLeft">turn left</span>
+									</div></li>
+							</ul>
+						</div>
+						<div class="statusBar" style="">
+							<div class="progress" style="display: none;">
+								<span class="text">0%</span> <span class="percentage"
+									style="width: 0%;"></span>
+							</div>
+							<div class="info">choose 1 picture ,it's 12.32K</div>
+							<div class="btns">
+								<div id="filePicker2" class="webuploader-container">
+									<div class="webuploader-pick">continue to add ...</div>
+									<div id="rt_rt_1db0k2rq6au4mlp87015mh1jd46"
+										style="position: absolute; inset: 0px auto auto 10px; width: 94px; height: 42px; overflow: hidden;">
+										<input type="file" name="file"
+											class="webuploader-element-invisible" multiple="multiple"
+											accept="image/*"><label
+											style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255) none repeat scroll 0% 0%;"></label>
+									</div>
+								</div>
+								<div class="uploadBtn state-ready">submit</div>
+							</div>
+						</div>
+					</div>
+
+				</div> 
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		// 添加全局站点信息
+		var BASE_URL = 'http://localhost:8080/springMVC';
+	</script>
+	<!-- 这5个js文件是从webuploader的demo中扣下来的，这整个页面都是扣下来的 -->
+	<!--因为本地编辑器乱码，直接用他们网站的 --> 
+<script type="text/javascript" src="js/webuploader/jquery-3.3.1.js"></script>		
+	<script type="text/javascript" src="js/webuploader/js/webuploader.js"></script>
+	<script type="text/javascript" src="js/webuploader/js/demo.js"></script>
+
+</body>
+</html>
