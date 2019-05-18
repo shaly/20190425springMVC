@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/webuploader/jquery-3.3.1.js"></script>
+</head>
+<body>
+
+<form action="http://localhost:8080/springMVC/logined">
+	<p>account:<input type="text" id="account" autofocus="autofocus" /></p>
+	<p>password:<input type="text" id="password" /></p>
+	
+	<p><input type="button" id="but" value="submit" /></p>
+	
+	
+	
+	
+</form>
+<script type="text/javascript">
+	
+		$(function () {
+			$("#but").on("click",function(){
+				console.log("6666666");
+				var account=$("#account").val();
+				var password=$("#password").val();
+				
+				var ajax=$.post("http://localhost:8080/springMVC/logined",{"account":account,"password":password});
+				ajax.then(function (data) {
+					alert(data);
+					if(data=="success"){
+						console.log("88888");
+						window.location.href="pageMain?username=Jane&account="+account;
+					}else{
+						alert("account or password is wrrong !");
+						$("#password").val().focus();
+					}
+				});
+				ajax.fail(function (){
+					console.log("login failed *****");
+				});
+				//去掉button默认行为
+				//e.preventDefault();
+				
+			});
+		})
+	
+	</script>
+</body>
+</html>
