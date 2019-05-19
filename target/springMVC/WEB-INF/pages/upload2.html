@@ -8,8 +8,8 @@
 	href="js/webuploader/webuploader.css">
 
 <!--引入JS-->
-<script type="text/javascript" src="js/webuploader/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="js/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="${basePath}/js/webuploader/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="${basePath}/js/webuploader/webuploader.js"></script>
 
 <!--SWF在初始化的时候指定，在后面将展示-->
 </head>
@@ -28,7 +28,7 @@
 	</div>
 	<script type="text/javascript">
 		//初始化Web Uploader
-		var BASE_URL = "http://localhost:8080/springMVC";
+		var BASE_URL = "${basePath}";
 		var uploader = WebUploader.create({
 			/* formData:{
 				dir:"/course"
@@ -41,7 +41,7 @@
 			swf : BASE_URL + '/js/Uploader.swf',
 
 			// 文件接收服务端。
-			server : 'http://localhost:8080/springMVC/uploadFile2',
+			server : '${basePath}/uploadFile2',
 			//设定空间的名字，后台名字要对应，默认为file，可以自定义
 			fileVal:"fileName",
 			// 选择文件的按钮。可选。

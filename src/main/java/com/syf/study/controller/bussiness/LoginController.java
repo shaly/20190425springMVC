@@ -46,6 +46,12 @@ public class LoginController {
 			String sCode = (String) session.getAttribute(Constants.KAPTCHA_SESSION_KEY);
 			if(sCode.equalsIgnoreCase(code)) {
 				if("123".equals(account) && "123".equals(password)) {
+					User u=new User();
+					u.setAccount("123");
+					u.setPassword("123");
+					u.setUsername("Jane");
+					session.setAttribute("sessionUser", u);
+					
 					return "success";
 				}else {
 					return "failed";
@@ -55,6 +61,11 @@ public class LoginController {
 			}
 		}
 		if("123".equals(account) && "123".equals(password)) {
+			User u=new User();
+			u.setAccount("123");
+			u.setPassword("123");
+			u.setUsername("Jane");
+			session.setAttribute("sessionUser", u);
 			return "success";
 		}else {
 			return "failed";

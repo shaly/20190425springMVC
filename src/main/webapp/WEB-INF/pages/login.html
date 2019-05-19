@@ -66,7 +66,7 @@ ${basePath}
 					alert(data);
 					if(data=="success"){
 						console.log("88888");
-						window.location.href="pageMain?username=Jane&account="+account;
+						window.location.href="${basePath}/admin/index";
 					}else if(data=="errCode"){
 						alert("view code is wrrong !");
 						$("#code").val("").focus();
