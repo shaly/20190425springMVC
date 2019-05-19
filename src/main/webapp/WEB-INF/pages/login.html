@@ -10,6 +10,7 @@
 <form action="http://localhost:8080/springMVC/logined">
 	<p>account:<input type="text" id="account" autofocus="autofocus" /></p>
 	<p>password:<input type="text" id="password" /></p>
+	<p style="display: none;" id="picBox">view code:<input type="text" maxlength="4" id="code" /><img id="codeImg" src="http://localhost:8080/springMVC/kaptcha/code" alt="view code"/> <a href="#" id="changeImg">change</a> </p>
 	
 	<p><input type="button" id="but" value="submit" /></p>
 	
@@ -20,20 +21,62 @@
 <script type="text/javascript">
 	
 		$(function () {
+			$("#codeImg").on("click",function(){
+				this.src="http://localhost:8080/springMVC/kaptcha/code?d="+Math.random();
+			});
+			
+			$("#changeImg").on("click",function(){
+				$("#codeImg").click();
+			});
+			
+			var errorCount=0;
+			
 			$("#but").on("click",function(){
 				console.log("6666666");
 				var account=$("#account").val();
 				var password=$("#password").val();
+				var code=$("#code").val();
+
+				alert( errorCount);
+				if(errorCount>2){
+					$("#picBox").show();
+					alert("111"+errorCount);
+				}
+				if(!$("#picBox").is(":hidden")){
+					if(!code){
+						$("#code").focus();
+						alert("please write errCode");
+						return;
+					}
+				}
+
+				if(!account ){
+					$("#account").focus();
+					alert("please write account");
+					return;
+				}
+				if(!password){
+					$("#password").focus();
+					alert("please write password");
+					return;
+				}
 				
-				var ajax=$.post("http://localhost:8080/springMVC/logined",{"account":account,"password":password});
+				var ajax=$.post("http://localhost:8080/springMVC/logined",{"errorCount":errorCount,"code":code,"account":account,"password":password});
 				ajax.then(function (data) {
 					alert(data);
 					if(data=="success"){
 						console.log("88888");
 						window.location.href="pageMain?username=Jane&account="+account;
+					}else if(data=="errCode"){
+						alert("view code is wrrong !");
+						$("#code").val("").focus();
+						$("#codeImg").click();
 					}else{
 						alert("account or password is wrrong !");
-						$("#password").val().focus();
+						$("#password").val("").focus();
+						$("#code").val("").focus();
+						$("#codeImg").click();
+						errorCount++;
 					}
 				});
 				ajax.fail(function (){
