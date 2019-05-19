@@ -10,7 +10,9 @@
 		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
 	
-	
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class><!-- 通过这个类，可以在控制器中任意地方获取req和resp -->
+	</listener>
 	
 	<!-- 
 		配置springMVC核心配置文件的三种方式

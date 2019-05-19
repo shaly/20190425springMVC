@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="js/webuploader/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="${basePath}/js/webuploader/jquery-3.3.1.js"></script>
 </head>
 <body>
-
-<form action="http://localhost:8080/springMVC/logined">
+${basePath}
+<form action="${basePath}/logined">
 	<p>account:<input type="text" id="account" autofocus="autofocus" /></p>
 	<p>password:<input type="text" id="password" /></p>
-	<p style="display: none;" id="picBox">view code:<input type="text" maxlength="4" id="code" /><img id="codeImg" src="http://localhost:8080/springMVC/kaptcha/code" alt="view code"/> <a href="#" id="changeImg">change</a> </p>
+	<p style="display: none;" id="picBox">view code:<input type="text" maxlength="4" id="code" /><img id="codeImg" src="${basePath}/kaptcha/code" alt="view code"/> <a href="#" id="changeImg">change</a> </p>
 	
 	<p><input type="button" id="but" value="submit" /></p>
 	
@@ -22,7 +22,7 @@
 	
 		$(function () {
 			$("#codeImg").on("click",function(){
-				this.src="http://localhost:8080/springMVC/kaptcha/code?d="+Math.random();
+				this.src="${basePath}/kaptcha/code?d="+Math.random();
 			});
 			
 			$("#changeImg").on("click",function(){
@@ -61,7 +61,7 @@
 					return;
 				}
 				
-				var ajax=$.post("http://localhost:8080/springMVC/logined",{"errorCount":errorCount,"code":code,"account":account,"password":password});
+				var ajax=$.post("${basePath}/logined",{"errorCount":errorCount,"code":code,"account":account,"password":password});
 				ajax.then(function (data) {
 					alert(data);
 					if(data=="success"){

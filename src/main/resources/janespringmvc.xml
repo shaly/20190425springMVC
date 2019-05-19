@@ -63,6 +63,10 @@
 			</list>
 		</property>
 	</bean>
+	
+	<!-- 初始化全路径 -->
+	<bean class="com.syf.study.config.BasePathHandler" init-method="init"></bean>
+	
 	<!-- 视图解析器 
 		对象模型的视图解析器，下面是一个默认的视图解析器
 	-->
