@@ -70,11 +70,19 @@
 	<!-- 定义拦截器 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/admin/index"/>
+		<!-- 拦截指定页面 -->
+			<!-- <mvc:mapping path="/admin/index"/>
 			<mvc:mapping path="/admin/add"/>
 			<mvc:mapping path="/admin/update"/>
 			<mvc:mapping path="/admin/delete"/>
-			<mvc:mapping path="/admin/query"/>
+			<mvc:mapping path="/admin/query"/> -->
+			<!-- 拦截某路径下的所有路径 -->
+			<mvc:mapping path="/admin/*"/>
+			<!-- 拦截某路径下的所有路径及所有路径的子路径的子路径的…… -->
+			<mvc:mapping path="/admin/**"/>
+			<!-- 指定不拦截的路径 -->
+			<!-- <mvc:exclude-mapping path="/admin/query"/> -->
+			
 			<bean class="com.syf.study.config.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>

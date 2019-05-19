@@ -3,6 +3,8 @@ package com.syf.study.config;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.core.MethodParameter;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,7 +29,15 @@ public class LoginInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		System.out.println("2-------------------preHandle 当前类是-------------"+request.getClass().getName());
-		
+		HandlerMethod method = (HandlerMethod)handler;
+		System.out.println("当前执行的类是："+method.getBean());
+		System.out.println("当前执行的方法是:"+method.getMethod().getName());
+		MethodParameter[] parameters = method.getMethodParameters();
+		if(parameters.length>0) {
+			for (MethodParameter methodParameter : parameters) {
+				System.out.println("参数=====>"+methodParameter.getParameterName()+"==="+methodParameter.getParameterIndex());
+			}
+		}
 	}
 
 	@Override
